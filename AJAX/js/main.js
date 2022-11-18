@@ -6,6 +6,13 @@ request.onreadystatechange = function() {
 
     //comprueba el estado de la api, siendo 4 el valor para el estado de RECIBIDO, y de 200 OK en la extensión restful
     if (this.readyState == 4 && this.status == 200) {
+        // usamos this para hacer referencia 
+        //al objeto al que se refiere dentro de la función (this.readyState)
+        // que sería igual que poner xhttp.readyState, solo que usamos this
+        // para asegurarnos que nos referimos al objeto, ya que varios
+        //programadores que trabajen en el mismo proyecto pueden darle nombres
+        // diferentes a las variables
+
         // usamos JSON.parse para transofrmar el texto a formato JSON, y lo metemos en la variable repsonse
         const response = JSON.parse(this.responseText)
         //creamos variable entries para meter el apartado entries (response.entries) del JSON, 
@@ -22,9 +29,12 @@ request.onreadystatechange = function() {
         let entriesDiv = document.getElementById('showEntries');
         // igualamos la variable del div con .innerHTML para modifcar el div del HTML con la variable que hemos creado como contador "htmlContent, mostrando así "
         entriesDiv.innerHTML= htmlContent;
+        
     }
 }
 request.open("GET", "https://api.publicapis.org/entries", true);
+//Para autorización de coger datos, primer parámetro es el nombre del header, el segundo el token (value)
+request.setRequestHeader(app-id, "63768da658fe3b011c6f1da1");
 request.send();
 }
 
