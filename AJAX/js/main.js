@@ -38,3 +38,32 @@ request.setRequestHeader("app-id", "63768da658fe3b011c6f1da1");
 request.send();
 }
 
+
+function inIt(){
+    console.log('Website loaded successfully!');
+    let request =  new XMLHttpRequest();
+    request.onreadystatechange = function() {
+        console.log(`estado actual ${this.readyState}`);
+    
+        if (this.readyState == 4 && this.status == 200) {
+    
+            const productosDestacados = JSON.parse(this.responseText)
+            let htmlContent = "<ul><li><span>Malaga</span></li></ul>";
+    
+            for (i = 0; i < productosDestacados.length; i++) {
+            htmlContent += `<li>${productosDestacados[i].nombre}, 
+            ${productosDestacados[i].stock}, 
+            ${productosDestacados[i].precio}</li>`
+            
+            }
+    
+            let entriesDiv = document.getElementById('showEntries');
+            entriesDiv.innerHTML= htmlContent;
+            
+        }
+    }
+    request.open("GET", "http://127.0.0.1:8000/productosdestacados", true);
+  
+    request.setRequestHeader("app-id", "63768da658fe3b011c6f1da1");
+    request.send();
+    }

@@ -39,7 +39,7 @@ function userDetail() {
         console.log(`estado actual ${this.readyState}`);
         if (this.readyState == 4 && this.status == 200) {
             const response = JSON.parse(this.responseText)
-            let htmlContent = `<ul><li>${response.id}</li> 
+            const htmlContent = `<ul><li>${response.id}</li> 
             <li>${response.title}</li>
             <li>${response.firstName}</li>
             <li>${response.lastName}</li>
@@ -54,7 +54,7 @@ function userDetail() {
             <li>${response.location.country}</li>
             <li>${response.location.timezone}</li>
             <li>${response.registerDate}</li>
-            <li>${response.updateDate}</li>`;
+            <li>${response.updateDate}</li></ul>`;
 
 
             let usersDiv = document.getElementById("container")
