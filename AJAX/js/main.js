@@ -34,7 +34,7 @@ request.onreadystatechange = function() {
 }
 request.open("GET", "https://api.publicapis.org/entries", true);
 //Para autorización de coger datos, primer parámetro es el nombre del header, el segundo el token (value)
-request.setRequestHeader(app-id, "63768da658fe3b011c6f1da1");
+request.setRequestHeader("app-id", "63768da658fe3b011c6f1da1");
 request.send();
 }
 
